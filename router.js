@@ -10,7 +10,7 @@ function serveStatic(req, res) {
         return res.end();
       }
     */
-    if (req.url == '/') req.url = '/index.html';
+    if (req.url == '/') req.url = './client/index/index.html';
     let filePath = path.join(__dirname, req.url);
     console.log(filePath);
     fs.readFile(filePath, (err, content) => {
