@@ -8,7 +8,7 @@ function serveStatic(req, res) {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/plain');
         return res.end();
-      }
+      } 
     */
     if (req.url == '/')
         req.url = './client/index/index.html';
