@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Register now!</title>
+
+    <link rel="stylesheet" href="../style/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!--<img src="../assets/men2.png" draggable="false">-->
+        <form method="post" action="../db">
+            <div class="form-input">
+                <input type="text" name="name" id="n" placeholder="Nume și prenume" required>
+            </div>
+            <div class="form-input">
+                <input type="text" name="email" id="e" placeholder="Email" required>
+            </div>
+            <div class="form-input">
+                <input type="text" name="username" id="u" placeholder="Username" required>
+            </div>
+            <div class="form-input">
+                <input type="password" name="password" id="p" placeholder="Parolă" required>
+            </div>
+            <div class="form-input">
+                <input type="password" name="password2" id="p2" placeholder="Reintrodu parola" required>
+            </div>
+            <br>
+            <input type="button" name="register" value="Înregistrează-te acum!" class="btn-login" onclick="reg()">
+            <br>
+        </form>
+    </div>
+    <script src="../scripting/script.js"></script>
+</body>
+
+</html>

@@ -10,15 +10,21 @@ function serveStatic(req, res) {
         return res.end();
       }
     */
-    if (req.url == '/') req.url = './client/index/index.html';
-    let filePath = path.join(__dirname, req.url);
+    if (req.url == '/')
+        req.url = './client/index/index.html';
+
+    let filePath = path.join(__dirname,'/client', req.url);
     console.log(filePath);
+
     fs.readFile(filePath, (err, content) => {
         if (err) {
             console.log(err);
+         
             res.statusCode = 200;
             res.setHeader('Content-Type', 'text/html');
+         
             req.url = './client/404/NotFound.html';
+         
             fs.readFile('./client/404/NotFound.html', (error, cont) => {
                 if (error) {
                     console.log(error);
@@ -32,7 +38,7 @@ function serveStatic(req, res) {
                 }
             });
         }
-         else {
+        else {
             res.statusCode = 200;
             res.setHeader('Content-Type', getType(req.url));
             res.end(content);
