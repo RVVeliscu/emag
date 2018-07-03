@@ -9,25 +9,21 @@
 
 <body>
     <div class="container">
-        <!--<img src="../assets/men2.png" draggable="false">-->
-        <form method="post" action="../db">
-            <div class="form-input">
-                <input type="text" name="name" id="n" placeholder="Nume și prenume" required>
-            </div>
-            <div class="form-input">
-                <input type="text" name="email" id="e" placeholder="Email" required>
-            </div>
-            <div class="form-input">
-                <input type="text" name="username" id="u" placeholder="Username" required>
-            </div>
-            <div class="form-input">
-                <input type="password" name="password" id="p" placeholder="Parolă" required>
-            </div>
-            <div class="form-input">
-                <input type="password" name="password2" id="p2" placeholder="Reintrodu parola" required>
-            </div>
+        <img src="../assets/men2.png" draggable="false">
+        <form class="regform" method="post" action="../db">
+
+                <input type="text" name="name" id="n" placeholder="Nume și prenume" class="form-input" required>
+            
+                <input type="text" name="email" id="e" placeholder="Email" class="form-input" required>
+            
+                <input type="text" name="username" id="u" placeholder="Username" class="form-input" required>
+            
+                <input type="password" name="password" id="p" placeholder="Parolă" class="form-input" required>
+            
+                <input type="password" name="password2" id="p2" placeholder="Reintrodu parola" class="form-input" required>
+            
             <br>
-            <input type="button" name="register" value="Înregistrează-te acum!" class="btn-login" onclick="reg()">
+            <input type="button" name="register" value="Înregistrează-te acum!" class="btn-login" class="form-input" onclick="reg()">
             <br>
         </form>
     </div>
