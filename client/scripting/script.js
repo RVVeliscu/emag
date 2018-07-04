@@ -20,11 +20,11 @@ function reg() {
 
         xmlhttp.send(JSON.stringify({
             name: nume,
-            email: email,
+            email: document.getElementById('e').value,
             username: username,
             password: pass
         }));
-        
+
         console.log("k");
     }
 }

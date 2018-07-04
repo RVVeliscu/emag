@@ -34,17 +34,17 @@ function serveStatic(req, res) {
         res.statusCode = 200;
 
         let data = '';
-        console.log(JSON.parse(fs.readFileSync('./users.json')));
+        //console.log(JSON.parse(fs.readFileSync('./users.json')));
         users = JSON.parse(fs.readFileSync('./users.json'));
-        console.log("users" + users);
+        //console.log("users" + users);
         req.on('data', (chunk) => data += chunk)
         req.on('end', () => {
             users.push(JSON.parse(data));
-           console.log(users);
+          // console.log(users);
             res.end('Ok');
         });
-
-        fs.writeFile('./users.json', JSON.stringify(users), 'utf8');
+        console.log(JSON.stringify(users));
+        fs.writeFile('users.json', JSON.stringify(users));
        // console.log(users);
         return;
     }
