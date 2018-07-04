@@ -1,31 +1,53 @@
 const fs = require('fs');
 const path = require('path');
 
+let users = [];
+
 function serveStatic(req, res) {
-
-    if (req.method === "POST" && req.url === '/insert') {
-        res.statusCode = 200;
-        //console.log(req);
-        var User = {
-            name: req.body.name,
-            email: req.body.email,
-            username: req.body.username,
-            password: req.body.password
-        };
-
-        mongo.connect(url, function (err, db) {
-            assert.equal(null, err);
-            db.collection('Users').insertOne(User, function (err, result) {
-                if (err)
-                    console.log(err);
-                console.log('User created');
-                db.close();
+    /*
+        if (req.method === "POST" && req.url === '/insert') {
+            res.statusCode = 200;
+            //console.log(req);
+            var User = {
+                name: req.body.name,
+                email: req.body.email,
+                username: req.body.username,
+                password: req.body.password
+            };
+    
+            mongo.connect(url, function (err, db) {
+                assert.equal(null, err);
+                db.collection('Users').insertOne(User, function (err, result) {
+                    if (err)
+                        console.log(err);
+                    console.log('User created');
+                    db.close();
+                });
             });
+    
+            res.redirect('/');
+        }
+        console.log(req.url);
+    */
+    if (req.method === "POST" && req.url === '/insert') {
+
+        res.statusCode = 200;
+
+        let data = '';
+        console.log(JSON.parse(fs.readFileSync('./users.json')));
+        users = JSON.parse(fs.readFileSync('./users.json'));
+        console.log("users" + users);
+        req.on('data', (chunk) => data += chunk)
+        req.on('end', () => {
+            users.push(JSON.parse(data));
+           console.log(users);
+            res.end('Ok');
         });
 
-        res.redirect('/');
+        fs.writeFile('./users.json', JSON.stringify(users), 'utf8');
+       // console.log(users);
+        return;
     }
-    console.log(req.url);
 
     if (req.url == '/')
         req.url = './index/index.html';
