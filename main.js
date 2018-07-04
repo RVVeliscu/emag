@@ -2,6 +2,9 @@
 const http = require('http');
 const fs = require('fs');
 
+var routes = require('./router.js');
+
+
 //setting the route to the server 
 const hostname = '127.0.0.1';
 const port = 3000;

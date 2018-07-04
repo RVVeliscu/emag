@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <img src="../assets/men2.png" draggable="false">
-        <form class="regform" method="post" action="../db">
+        <form class="regform" method="post" action="/insert">
 
                 <input type="text" name="name" id="n" placeholder="Nume și prenume" class="form-input" required>
             
@@ -23,7 +23,7 @@
                 <input type="password" name="password2" id="p2" placeholder="Reintrodu parola" class="form-input" required>
             
             <br>
-            <input type="button" name="register" value="Înregistrează-te acum!" class="btn-login" class="form-input" onclick="reg()">
+            <input type="submit" name="register" value="Înregistrează-te acum!" class="btn-login" class="form-input" onclick="reg()">
             <br>
         </form>
     </div>
