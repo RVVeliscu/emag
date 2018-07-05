@@ -15,7 +15,7 @@ function reg() {
     }
     else {
         var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
-        xmlhttp.open("POST", "/insert");
+        xmlhttp.open('POST', '/insert');
         xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
         xmlhttp.send(JSON.stringify({
@@ -25,6 +25,26 @@ function reg() {
             password: pass
         }));
 
-        console.log("k");
+        console.log(XMLHttpRequest.responseText);
+
+
     }
+}
+
+function log() {
+    var email = document.getElementById('email').value;
+    var pwd = document.getElementById('pwd').value;
+        var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+        xmlhttp.open('POST', '/login');
+        xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+        xmlhttp.send(JSON.stringify({
+            email: email,
+            password: pwd
+        }));
+
+        console.log(XMLHttpRequest.responseText);
+
+
+    
 }

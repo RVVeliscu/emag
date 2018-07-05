@@ -2,6 +2,8 @@ const fs = require('fs');
 const path = require('path');
 
 let users = [];
+let connected = false;
+let conus = '';
 
 function serveStatic(req, res) {
     /*
@@ -40,12 +42,41 @@ function serveStatic(req, res) {
         req.on('data', (chunk) => data += chunk)
         req.on('end', () => {
             users.push(JSON.parse(data));
-          // console.log(users);
+            //console.log(users);
+            console.log(JSON.stringify(users));
+            fs.writeFile('users.json', JSON.stringify(users));
             res.end('Ok');
         });
-        console.log(JSON.stringify(users));
-        fs.writeFile('users.json', JSON.stringify(users));
-       // console.log(users);
+        res.end();
+        // console.log(users);
+        return;
+    }
+
+    if (req.method === "POST" && req.url === '/login') {
+
+        res.statusCode = 200;
+        let con = '';
+        let data = '';
+        //console.log(JSON.parse(fs.readFileSync('./users.json')));
+        users = JSON.parse(fs.readFileSync('./users.json'));
+        //console.log("users" + users);
+        req.on('data', (chunk) => data += chunk)
+        req.on('end', () => {
+            con = JSON.parse(data);
+            //console.log(users);
+            for (var i = 0; i < users.length(); ++i) {
+                if (con.username == users[i].username && con.password == users[i].password) {
+                    connected = true;
+                    conus = con.username;
+                    res.end('Ok');
+                    serveStatic('/index/index.html', res);
+                }
+            }
+            if(connected !== true)
+                res.end('not ok');
+        });
+        res.end();
+        // console.log(users);
         return;
     }
 
